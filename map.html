@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+            height: 450px;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<script>
+    // var obj = {
+    //     name : 'cql'
+    // }
+    // var key = 'age';
+
+    // obj[key] = 18;
+    // console.log(obj);
+    // console.log(obj.age);
+
+    // const item = [
+    //     [{
+    //         name : 'why'
+    //     },'qqh'],
+    //     ['age',18],
+    //     ['name1','cql'],
+    //     ['age1',17]
+    // ]
+    // const map = new Map(item);
+    // console.log(map);
+    // console.log(map.get({name : 'why'}));
+
+    // const m = new Map();
+    // const o = {
+    //     p: 'Hello World'
+    // };
+
+    // m.set(o, 'content')
+    // console.log(m);
+    // m.get(o) // "content"
+    // m.has(o) // true
+    // m.delete(o) // true
+    // m.has(o) // false
+
+    let map = new Map([
+        [1, 'one'],
+        [2, 'two'],
+        [3, 'three'],
+    ]);
+
+    // let arr = [...map.keys()]; // [1, 2, 3]
+    console.log(map.keys());
+    for(let value of map.keys()){
+        console.log(value);
+    }
+
+
+</script>
+
+</html>

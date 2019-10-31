@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+   // function Porsion(name, age) {
+   //    this.name = name;
+   //    this.age = age;
+   // }
+
+   // Porsion.prototype.sayHi = function() {
+   //    return 'hello , my name is ' + this.name
+   // }
+
+   // const xiaoming = new Porsion('xiaoming', 18);
+   // console.log(xiaoming.sayHi());
+   // console.log(xiaoming.name);
+
+
+
+
+   //实现一个new操作符
+   // function New(Fn){
+   //    var obj = {};
+   //    if(Fn.prototype !== null){
+   //       obj.__proto__ = Fn.prototype;
+   //       obj.__proto__.constructor = Fn;
+   //    }
+
+   //    const pamser =  Array.prototype.slice.call(arguments, 1);
+   //    const newObj = Fn.call(obj,pamser);
+   //    if((typeof Fn === 'object' || typeof Fn === 'function') && Fn !== null){
+   //       return newObj
+   //    }
+
+   //    return obj
+   // }
+
+   //实现JSON.stringify()
+
+   // const a = function(){
+   //    return '"' + 'o' + '"';
+   // }
+
+   //call的方法实现
+   // Function.prototype.mycall = function(content = window){
+   //    content.fn = this;
+   //    var args = [...arguments].slice(1);
+   //    content.fn(...args);
+   //    delete content.fn;
+   //    return content
+   // }
+
+   //柯里化函数
+   // function curry(){
+   //    var args = Array.prototype.slice.call(arguments);//转成数组，调用数组的方法
+   //    var fn = function(){
+   //       var newArgs = Array.prototype.slice.call(arguments);
+   //       return multi.apply(this,newArgs);
+   //    }
+
+   //    fn.toString = function(){
+   //       return  args.reduce(a , b =>{
+   //          return a * b
+   //       })
+   //    }
+   //    return fn
+   // }
+
+   //promise函数
+   // function Promise(fn){
+      
+   //    let self = this;
+   //    self.status = 'pending';
+   //    self.value = undefined;
+   //    self.reason = undefined;
+
+   //    function resolve(reason){
+   //       if(self.status === 'pending'){
+   //          self.status = 'resolve';
+   //          self.reason = reason;
+   //       }
+   //    }
+
+   //    function reject(error){
+   //       if(self.status === 'pending'){
+   //          self.status = 'reject';
+   //          self.reason = error;
+   //       }
+   //    }
+   // }
+   
+     
+
+</script>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	// var p = new Promise(function(a,b){
+	// 	console.log(this);
+	// 	const random = Math.random();
+	// 	if (random > 0.5) {
+	// 		a(random);
+	// 	} else {
+	// 		b(random);
+	// 	}
+	// });
+	// console.log(p);
+
+	// const p1 = new Promise((resolve, reject) => {
+	// 		resolve('hello');
+	// 	})
+	// 	.then(result => result)
+	// 	.catch(e => e);
+
+	// const p2 = new Promise((resolve, reject) => {
+	// 		throw new Error('报错了');
+	// 	})
+	// 	.then(result => result)
+	// 	.catch(e => e);
+
+	// Promise.all([p1, p2])
+	// 	.then(result => console.log(result))
+	// 	.catch(e => console.log(e));
+	// // ["hello", Error: 报错了]
+
+	// const resolved = Promise.resolve(42);
+	// const rejected = Promise.reject(-1);
+
+	// const allSettledPromise = Promise.allSettled([resolved, rejected]);
+
+	// allSettledPromise.then(function (results) {
+	// 	console.log(results);
+	// });
+	// // [
+	// //    { status: 'fulfilled', value: 42 },
+	// //    { status: 'rejected', reason: -1 }
+	// // ]
+
+	// const img = new Image();
+	// console.log(img.onload);
+
+
+	//Generator搭配Promise
+	// function getFoo() {
+	// 	return new Promise(function (resolve, reject) {
+	// 		resolve('foo');
+	// 	});
+	// }
+
+	// const g = function* () {
+	// 	try {
+	// 		const foo = yield getFoo();
+	// 		console.log(foo);
+	// 	} catch (e) {
+	// 		console.log(e);
+	// 	}
+	// };
+
+	// function run(generator) {
+	// 	const it = generator();
+
+	// 	function go(result) {
+	// 		if (result.done) return result.value;
+	// 		return result.value.then(function (value) { //result.value是promise对象
+	// 			return go(it.next(value));
+	// 		}, function (error) {
+	// 			return go(it.throw(error));
+	// 		});
+	// 	}
+
+	// 	go(it.next());
+
+	// }
+
+	// run(g);
+	
+	// const obj = {
+	// 	name : 'qqh'
+	// }
+
+	// const resolveObject = Promise.resolve(obj);
+	// console.log(resolveObject);
+	// resolveObject.then(data=>{
+	// 	console.log(data);
+	// })
+
+	// let thenable = {
+	// 	then: function (resolve, reject) {
+	// 		resolve(42);
+	// 	}
+	// };
+
+	// let p1 = Promise.resolve(thenable);
+	// console.log(p1);
+	// p1.then(function (value) {
+	// 	console.log(value); // 42
+	// });
+</script>
+
+</html>

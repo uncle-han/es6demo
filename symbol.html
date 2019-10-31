@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+   // const information = {
+   //    [Symbol('qqh')] : {
+
+   //    }
+   // }
+
+   // const obj = {};
+   // let a = Symbol('A');
+   // let b = Symbol('B');
+
+   // obj[a] = 'hello';
+   // obj[b] = 'Symbol';
+   // console.log(obj);
+   // const objectSymbol = Object.getOwnPropertySymbols(obj);
+   // console.log(objectSymbol);
+
+   // for (let item of obj) {
+   //    console.log(item);
+   // }
+
+   class Collection {
+      *[Symbol.iterator]() {
+         let i = 0;
+         while (this[i] !== undefined) {
+            yield this[i];
+            ++i;
+         }
+      }
+   }
+
+   let myCollection = new Collection();
+   console.log(myCollection);
+   myCollection[0] = 'a';
+   myCollection[1] = 'b';
+
+   for (let value of myCollection) {
+      console.log(value);
+   }
+</script>
+
+</html>
