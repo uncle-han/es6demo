@@ -12,30 +12,74 @@
 
 </body>
 <script>
-   function getStockSymbol(name){
-      setTimeout(()=>{
-         return '我是getStockSymbol' + name;
-      },1000)
-   }
+   // function getStockSymbol(name){
+   //    setTimeout(()=>{
+   //       return '我是getStockSymbol' + name;
+   //    },1000)
+   // }
 
 
-   function getStockPrice(name){
-      setTimeout(()=>{
-         return '我是getStockPrice'  +  name;
-      },1000)
-   }
+   // function getStockPrice(name){
+   //    setTimeout(()=>{
+   //       return '我是getStockPrice'  +  name;
+   //    },1000)
+   // }
 
-   async function getStockPriceByName(name) {
-      const symbol = await getStockSymbol(name);
-      const stockPrice = await getStockPrice(symbol);
-      return stockPrice;
-   }
+   // async function getStockPriceByName(name) {
+   //    const symbol = await getStockSymbol(name);
+   //    const stockPrice = await getStockPrice(symbol);
+   //    return stockPrice;
+   // }
 
-   console.log(getStockPriceByName());
+   // console.log(getStockPriceByName());
 
-   getStockPriceByName('goog').then(function (result) {
-      console.log(result);
-   });
+   // getStockPriceByName('goog').then(function (result) {
+   //    console.log(result);
+   // });
+
+   // async function tese(){
+   //    return '1';
+   // }
+
+   // console.log(tese());
+   // const Y = 'yyyyyyyyyy'
+   // const y = new String(Y)
+   // console.log(y);
+
+   // const href = {
+   //    '/' : 'home',
+   //    '/about' : 'About'
+   // }
+
+   // console.log(href['/']);
+
+   //    const str = 'hello word'
+
+   //    String.prototype.spacily = function (str){
+   //       var val = String(str);
+   //       console.log(val.split('').join('_'));
+   //       return val.split('').join('_').substr(1,-1);
+   //    }
+
+   //   console.log('hello word'.spacily());
+
+
+   // String.prototype.nRepeat = function (count) {
+   //    var str = String(this);
+   //    var res = "";
+   //    var n = count;
+   //    if (n < 0 || n == Infinity) throw RangeError("count is not Number")
+   //    for (; n > 0; (n >>>= 1) && (str += str)) { if (n & 1) res += str; }
+   //    return res;
+   // }
+   console.log('0 & 1', 0 & 1);
+   console.log('1 & 1', 1 & 1);
+   console.log('1 & 2', 1 & 2);
+   console.log('2 & 1', 2 & 1);
+   console.log('2 & 2', 2 & 2);
+   console.log('2 & 3', 2 & 3);
+   console.log('3 & 2', 3 & 2);
+
 </script>
 
 </html>

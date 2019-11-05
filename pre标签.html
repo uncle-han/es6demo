@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<body>
+   <pre id="target"></pre>
+   <pre id="source">
+      1 2 333
+        asd 阿萨德
+    12 的啊    阿萨德 问
+    按时
+   </pre>
+</body>
+<script>
+   // console.log();
+   const source = document.getElementById('source');
+   const target = document.getElementById('target');
+   let len = 1;
+   const sourceInnerHTML = source.innerHTML
+   source.style.display = 'none';
+   var timer = setInterval(function(){
+      target.innerHTML = sourceInnerHTML.substr(0,len++);
+      if(len === sourceInnerHTML.length){
+         clearInterval(timer);
+         alert('结束了')
+      }
+   },200)
+
+
+</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+<body>
+   <button id="bt">点击我</button>
+   <script>
+      var event = document.createEvent('Event',{
+         name : 'qqh'
+      })
+      event.initEvent('custom',true,true);//初始化事件
+      const bt = document.getElementById('bt');
+      bt.addEventListener('custom',function(e){
+         console.log(e);
+      },false);
+      bt.dispatchEvent(event);
+   </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+   <button id="bt">点我</button>
+</body>
+<script>
+   const bt = document.getElementById('bt');
+   bt.addEventListener('cat', function () {
+      console.log(e.detail);
+   })
+   const e = new CustomEvent('cat', {
+      detail: {
+         hazcheeseburger: true,
+         name : 'qqh'
+      }
+   })
+   bt.dispatchEvent(e)
+</script>
+
+</html>
