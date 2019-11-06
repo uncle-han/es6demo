@@ -5,31 +5,62 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Document</title>
+   <style>
+      /* html,body{
+         width: 100%;
+         height: 100%;
+         margin: 0;
+      }
+      #g{
+         width: 100%;
+         height: 100%;
+         background: url('cover_thumbnail.jpg');
+      } */
+   </style>
 </head>
 <body>
-   <pre id="target"></pre>
+   <!-- <div id="g"></div> -->
+   <!-- <pre id="target"></pre>
    <pre id="source">
       1 2 333
         asd 阿萨德
     12 的啊    阿萨德 问
     按时
-   </pre>
+   </pre> -->
 </body>
 <script>
-   // console.log();
-   const source = document.getElementById('source');
-   const target = document.getElementById('target');
-   let len = 1;
-   const sourceInnerHTML = source.innerHTML
-   source.style.display = 'none';
-   var timer = setInterval(function(){
-      target.innerHTML = sourceInnerHTML.substr(0,len++);
-      if(len === sourceInnerHTML.length){
-         clearInterval(timer);
-         alert('结束了')
-      }
-   },200)
+   // // console.log();
+   // const source = document.getElementById('source');
+   // const target = document.getElementById('target');
+   // let len = 1;
+   // const sourceInnerHTML = source.innerHTML
+   // source.style.display = 'none';
+   // var timer = setInterval(function(){
+   //    target.innerHTML = sourceInnerHTML.substr(0,len++);
+   //    if(len === sourceInnerHTML.length){
+   //       clearInterval(timer);
+   //       alert('结束了')
+   //    }
+   // },200)
 
+   // for(var i=0;i<3;i++){
+   //    setTimeout( function(){
+   //       console.log(i);
+   //    },0)
+   // }
 
+   // function tese(){
+   //    return {
+   //       say : 'hello'
+   //    }
+   // }
+   // console.log(tese());
+
+   // var a = 1,b=2,c = 3,d=4;
+   // console.log( Math.max.call(Math,a,b,c,d));
+
+   // var a=b=1024;
+   // var a = 1024; b =1024;
+   // console.log(a,b);
 </script>
 </html>
