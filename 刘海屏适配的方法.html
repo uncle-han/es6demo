@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body, ul {
+      margin: 0;
+    }
+ 
+    ul {
+      padding-left: 10px;
+    }
+ 
+    li {
+      list-style: none;
+    }
+ 
+    .phone {
+      position: relative;
+      width: 600px;
+      height: 300px;
+      border: 10px solid #000;
+      border-radius: 30px;
+      margin: 100px auto 0;
+    }
+ 
+    .content, .content ul {
+      width: 100%;
+      height: 100%;
+    }
+ 
+    .content {
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+ 
+    .camera {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 26px;
+      height: 180px;
+      background-color: black;
+      border-radius: 0 30px 30px 0;
+    }
+ 
+    li + li {
+      border-top: 1px solid #ccc;
+    }
+ 
+    li {
+      font-size: 16px;
+      padding: 5px;
+    }
+ 
+    *::-webkit-scrollbar {
+      padding-left: 100px;
+    }
+  </style>
+</head>
+<body>
+<div class="phone">
+  <div class="content">
+    <ul>
+      <li>SweeTango</li>
+      <li>Pacific Rose</li>
+      <li>SnapDragon</li>
+      <li>Envy</li>
+      <li>Koru (Plumac)</li>
+      <li>Pink Lady (Cripps Pink)</li>
+      <li>HoneYcrisp</li>
+      <li>Hoyal Gala</li>
+      <li>Macoun</li>
+      <li>SweeTango</li>
+      <li>Pacific Rose</li>
+      <li>SnapDragon</li>
+      <li>Envy</li>
+      <li>Koru (Plumac)</li>
+      <li>Pink Lady (Cripps Pink)</li>
+      <li>HoneYcrisp</li>
+      <li>Hoyal Gala</li>
+      <li>Macoun</li>
+      <li>Macoun</li>
+      <li>SweeTango</li>
+      <li>Pacific Rose</li>
+      <li>SnapDragon</li>
+      <li>Envy</li>
+      <li>Koru (Plumac)</li>
+      <li>Pink Lady (Cripps Pink)</li>
+      <li>HoneYcrisp</li>
+      <li>Hoyal Gala</li>
+      <li>Macoun</li>
+      <div class="camera"></div>
+    </ul>
+  </div>
+</div>
+<script>
+  ~~function () {
+    var thresh = 20;
+    var maxoffset = 50;
+    var aLi = document.querySelectorAll('li');
+    var oCamera = document.querySelector('.camera');
+    var oContent = document.querySelector('.content')
+    var camPs = oCamera.getBoundingClientRect();
+ 
+ 
+    ~~function () {
+      oContent.onscroll = arguments.callee;
+      for (var item of aLi) {
+        var itemRect = item.getBoundingClientRect();
+        var dtf = itemRect.bottom - camPs.top
+        var dtb = itemRect.bottom - camPs.bottom
+        if (Math.abs(dtf) < 20) {
+          item.style.transform = 'translateX(' + lerp(0, 30, cal(dtf, 20)) + "px)";
+ 
+        } else if (dtf > 20 && dtb < -20) {
+          item.style.transform = 'translateX(' + 30 + "px)";
+        } else if (Math.abs(dtb) <20) {
+          item.style.transform = 'translateX(' + lerp(30, 0, cal(dtb, 20)) + "px)";
+        } else {
+          //全部移除摄像头区域
+          item.style.transform = 'translateX(' + 0 + "px)";
+        }
+      }
+    }()
+  }()
+ 
+  /**
+   * @param 插值算法
+   * @param p1 初始化状态
+   * @param p2 结束状态
+   * @param t  时间函数 (0-100%)
+   *
+   * 返回p1 到 p2 之间的值
+   */
+  function lerp(p1, p2, t) {
+    return (p2 - p1) * t + p1
+  }
+ 
+  function cal(dis, thr) {
+    return (dis + thr) / (thr * 2)
+  }
+</script>
+</body>
+</html>
