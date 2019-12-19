@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+   function LazyMan(name) {
+      if (!(this instanceof LazyMan)) {
+         return new LazyMan(name)
+      }
+      const cb = next => {
+         console.log('Hi This is' + name);
+         next();
+      }
+      this.cbs = [cb];
+      setTimeout(() => {
+         this.next();
+      }, 0)
+   }
+   LazyMan.prototype.eat = function (foot) {
+      const cb = next => {
+         console.log('Eat' + foot + '~');
+         next()
+      }
+      this.cbs.push(cb);
+      return this;
+   }
+   LazyMan.prototype.sleepFirst = function (time) {
+      const cb = (next) => {
+         setTimeout(() => {
+            next()
+         }, time * 1000)
+      }
+      this.cbs.unshift(cb);
+      return this
+   }
+   LazyMan.prototype.sleep = function (time) {
+      const cb = (next) => {
+         setTimeout(() => {
+            next()
+         }, time * 1000)
+      }
+      this.cbs.push(cb);
+      return this
+   }
+   LazyMan.prototype.next = function () {
+      if(this.cbs.length <= 0)return;
+      const first = this.cbs.shift();
+      first(this.next.bind(this))
+   }
+</script>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+   let paraNameValues = [
+      {
+         "paraName": "35291642248",
+         "paraValue": "35291642261"
+      }, {
+         "paraName": "35291642265",
+         "paraValue": "35291642278"
+      }, {
+         "paraName": "35291642281",
+         "paraValue": "35291642293"
+      }, {
+         "paraName": "35291642231",
+         "paraValue": "35291642243"
+      }, {
+         "paraName": "35291642248",
+         "paraValue": "35291642261"
+      }, {
+         "paraName": "35291642265",
+         "paraValue": "35291642278"
+      }, {
+         "paraName": "35291642281",
+         "paraValue": "35291642293"
+      }, {
+         "paraName": "35291642231",
+         "paraValue": "35291642243"
+      }, {
+         "paraName": "35291642248",
+         "paraValue": "35291642261"
+      }, {
+         "paraName": "35291642265",
+         "paraValue": "35291642278"
+      }, {
+         "paraName": "35291642281",
+         "paraValue": "35291642293"
+      }, {
+         "paraName": "35291642231",
+         "paraValue": "35291642243"
+      },
+      {
+         "paraName": "35291642248",
+         "paraValue": "35291642261"
+      }, {
+         "paraName": "35291642265",
+         "paraValue": "35291642278"
+      }, {
+         "paraName": "35291642281",
+         "paraValue": "35291642293"
+      }, {
+         "paraName": "35291642231",
+         "paraValue": "35291642243"
+      }, {
+         "paraName": "35291642248",
+         "paraValue": "35291642261"
+      }, {
+         "paraName": "35291642265",
+         "paraValue": "35291642278"
+      }, {
+         "paraName": "35291642281",
+         "paraValue": "35291642293"
+      }, {
+         "paraName": "35291642231",
+         "paraValue": "35291642243"
+      }, {
+         "paraName": "35291642248",
+         "paraValue": "35291642261"
+      }, {
+         "paraName": "35291642265",
+         "paraValue": "35291642278"
+      }, {
+         "paraName": "35291642281",
+         "paraValue": "35291642293"
+      }, {
+         "paraName": "35291642231",
+         "paraValue": "35291642243"
+      }
+   ];
+   const arr = [];
+   for (let i = 0; i < paraNameValues.length; i++) {
+      let res = arr.find(item => {
+         return item.paraName == paraNameValues[i].paraName && item.paraValue == paraNameValues[i].paraValue
+      })
+      if(!res){
+         arr.push(paraNameValues[i])
+      }
+   }
+</script>
+
+</html>

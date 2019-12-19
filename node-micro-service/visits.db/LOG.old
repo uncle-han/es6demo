@@ -1,0 +1,5 @@
+2019/12/16-14:08:56.595 42cc Recovering log #18
+2019/12/16-14:08:56.596 42cc Level-0 table #20: started
+2019/12/16-14:08:56.637 42cc Level-0 table #20: 201 bytes OK
+2019/12/16-14:08:56.705 42cc Delete type=0 #18
+2019/12/16-14:08:56.706 42cc Delete type=3 #17

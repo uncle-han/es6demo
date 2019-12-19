@@ -1,0 +1,6 @@
+2019/12/16 17:05:58 [error] 12980#13204: *1 CreateFile() "D:\Project\mydemo\nginx\nginx-1.16.1/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2019/12/16 17:08:46 [notice] 9000#7228: signal process started
+2019/12/16 17:09:09 [notice] 6104#5244: signal process started
+2019/12/16 17:09:09 [error] 6104#5244: CreateFile() "D:\Project\mydemo\nginx\nginx-1.16.1/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2019/12/16 17:16:42 [notice] 7396#5412: signal process started
+2019/12/16 17:16:42 [error] 7396#5412: CreateFile() "D:\Project\mydemo\nginx\nginx-1.16.1/logs/nginx.pid" failed (2: The system cannot find the file specified)
