@@ -1,0 +1,25 @@
+.turntable{
+    margin: auto;
+    width: fit-content;
+    position: relative;
+}
+.turntable::after{
+    content: "";
+    border: 20px solid transparent;
+    border-top-color: #333;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.turntable div{
+    margin: auto;
+    width: fit-content;
+}
+.turntable #box {
+    width: 500px;
+    height: 500px;
+    background-color: #ccc;
+    border-radius: 50%;
+}

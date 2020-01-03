@@ -2,105 +2,311 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
 </head>
 
 <body>
-
+	<input type="button" value="点我" id="bt">
 </body>
 <script>
-   // function Porsion(name, age) {
-   //    this.name = name;
-   //    this.age = age;
-   // }
+	// let _switch = true;
+	// let i = 0;
 
-   // Porsion.prototype.sayHi = function() {
-   //    return 'hello , my name is ' + this.name
-   // }
-
-   // const xiaoming = new Porsion('xiaoming', 18);
-   // console.log(xiaoming.sayHi());
-   // console.log(xiaoming.name);
-
-
+	// document.getElementById('bt').onclick = function(){
+	// 	if(_switch){
+	// 		_switch = false;
+	// 		setTimeout(function(){
+	// 			_switch = true;
+	// 		},3000);
+	// 		console.log(i++);
+	// 	}
+	// }
 
 
-   //实现一个new操作符
-   // function New(Fn){
-   //    var obj = {};
-   //    if(Fn.prototype !== null){
-   //       obj.__proto__ = Fn.prototype;
-   //       obj.__proto__.constructor = Fn;
-   //    }
+	// document.querySelector('div').addEventListener('click',_ => alert('div'));
+	// document.body.addEventListener('click', _ => alert('body'));
+	// window.addEventListener('click',_ => alert('window'));
+	// document.documentElement.addEventListener('click',_ => alert('html'));
+	// document.addEventListener('click',_ => alert('document'));
 
-   //    const pamser =  Array.prototype.slice.call(arguments, 1);
-   //    const newObj = Fn.call(obj,pamser);
-   //    if((typeof Fn === 'object' || typeof Fn === 'function') && Fn !== null){
-   //       return newObj
-   //    }
+	// function Porsion(name, age) {
+	//    this.name = name;
+	//    this.age = age;
+	// }
 
-   //    return obj
-   // }
+	// Porsion.prototype.sayHi = function() {
+	//    return 'hello , my name is ' + this.name
+	// }
 
-   //实现JSON.stringify()
+	// const xiaoming = new Porsion('xiaoming', 18);
+	// console.log(xiaoming.sayHi());
+	// console.log(xiaoming.name);
 
-   // const a = function(){
-   //    return '"' + 'o' + '"';
-   // }
+	// //实现一个new操作符
+	// function New(fn) {
+	//    var obj = {};
+	//    if (fn.prototype !== null) {
+	//       obj.__proto__ = fn.prototype
+	//    }
+	//    let res = fn.apply(obj, Array.prototype.slice.call(arguments, 1));
+	//    if ((typeof res === 'object' || typeof res === 'function') && res !== null) {
+	//       return res
+	//    }
+	//    return obj;
+	// }
 
-   //call的方法实现
-   // Function.prototype.mycall = function(content = window){
-   //    content.fn = this;
-   //    var args = [...arguments].slice(1);
-   //    content.fn(...args);
-   //    delete content.fn;
-   //    return content
-   // }
+	// function F (){
+	//    console.log(1);
+	// }
 
-   //柯里化函数
-   // function curry(){
-   //    var args = Array.prototype.slice.call(arguments);//转成数组，调用数组的方法
-   //    var fn = function(){
-   //       var newArgs = Array.prototype.slice.call(arguments);
-   //       return multi.apply(this,newArgs);
-   //    }
+	// console.log(New(F));
 
-   //    fn.toString = function(){
-   //       return  args.reduce(a , b =>{
-   //          return a * b
-   //       })
-   //    }
-   //    return fn
-   // }
+	// console.log(new );
 
-   //promise函数
-   // function Promise(fn){
-      
-   //    let self = this;
-   //    self.status = 'pending';
-   //    self.value = undefined;
-   //    self.reason = undefined;
+	// 实现一个 JSON.stringify
 
-   //    function resolve(reason){
-   //       if(self.status === 'pending'){
-   //          self.status = 'resolve';
-   //          self.reason = reason;
-   //       }
-   //    }
+	// function myStringify(obj) {
+	//    let type = typeof obj;
+	//    // 数据类型分不为对象的时候
+	//    if (type !== "object") {
 
-   //    function reject(error){
-   //       if(self.status === 'pending'){
-   //          self.status = 'reject';
-   //          self.reason = error;
-   //       }
-   //    }
-   // }
-   
-     
+	//       if (/string|nudefined|function|number/.test(type)) {
+	//          return String(obj)
+	//       }
+	//    } else {
+	//       // 数据类型为对象的时候
+	//       if (obj === null) {
+	//          return String(obj);
+	//       }
+	//       // 判断是不是数组
+	//       var res = [];
+	//       let arr = (obj.constructor.name === Array && typeof obj === 'object');
+	//       // console.log(obj.constructor === Array);
+	//       for (let k in obj) {
+	//          var v = obj[k];
+	//          let type = typeof v
+	//          if (/string|nudefined|function|number/.test(v)) {
+	//             v = '' + v + ''
+	//          } else if (type === 'object') {
+	//             v = myStringify(v)
+	//          }
+	//          res.push(arr ? String(v) : String(k) + ':' + String(v));
+	//       }
+	//       return (arr ? '[' : '{') + String(res) + (arr ? ']' : '}')
+	//    }
 
+	// }
+	// console.log(myStringify(undefined)); // undefined
+	// console.log(myStringify(null)); // null
+
+	// console.log(myStringify(123)); // null
+
+	// console.log(myStringify({
+	//    name: {
+	//       sex: 'name'
+	//    },
+	//    age: 16
+	// }));
+	// console.log(myStringify([1,2,3]));
+	// console.log(new String(myStringify));
+	// console.log( JSON.stringify('123'));
+
+	// console.dir(Object);
+
+	// JSON.parse
+
+	//  实现一个 JSON.parse
+
+	// function myparse(opt) {
+	//    // console.log(opt);
+	//    return eval( '(' + opt + ')' );
+	// };
+	// console.log(myStringify({
+	//    name: 'qqh'
+	// }));
+	// console.log(myparse(myStringify({
+	//    name: 13
+	// })));
+
+	// let funBody = "{name: 'qqh',age: 18, sex: 'nan'}";
+	// let json = (new Function('return' + funBody))();
+	// console.log(json);
+
+	// 实现一个 call
+	// Function.prototype.myCall = function(obj = window){
+	//    obj.fn = this;
+	//    let args = [];
+	//    for(var i = 1; i < arguments.length; i++){
+	//       args.push(arguments[i]);
+	//    }
+	//    let res = obj.fn(...args);
+	//    delete obj.fn;
+	//    return res
+	// }
+
+	// Function.prototype.apply2 = function (obj = window) {
+	// 	obj.fn = this;
+	// 	let args = [...arguments].slice(1);
+	// 	let res = obj.fn(...args);
+	// 	delete obj.fn;
+	// 	return res;
+	// };
+
+
+
+
+	// Function.prototype.bind2 = function (fun) {
+	// 	if (typeof fun !== 'function') {
+	// 		throw new TypeError(fun + 'is not a function');
+	// 	}
+	// 	let fn = this;
+	// 	let args = [...arguments].slice(1);
+
+	// 	function resfun() {
+	// 		return fn.apply(this instanceof resfun ? this : fun, args.concat(...arguments))
+	// 	}
+
+	// 	function Tem() {};
+	// 	Tem.prototype = this.prototype;
+	// 	resfun.prototype = new Tem();
+	// 	return resfun;
+	// }
+
+
+
+	// 6.实现一个继承
+	// function Parent(name){
+	// 	this.name = name;
+	// }
+
+	// Parent.prototype.sayname = function(){
+	// 	console.log(`my name is ${this.name}`);
+	// }
+
+	// function Child(name, ParentName){
+	// 	Parent.call(this, ParentName);
+	// 	this.name = name
+	// }
+
+	// Parent.prototype.sayhello = function(){
+	// 	console.log(`hello word`);
+	// }
+
+	// function created(parent) {
+	// 	function F(){};
+	// 	F.prototype = parent.prototype;
+	// 	return new F();
+	// }
+
+	// // Child.prototype = new Parent();
+	// Child.prototype = created(Parent);
+	// Child.prototype.constructor = Child
+
+	// Child.prototype.sayname = function(){
+	// 	console.log('child name :' + this.name);
+	// }
+
+	// let c = new Child('qqh', 'cjl');
+	// console.log(c);
+	// c.sayname();
+
+
+
+
+
+
+
+
+
+	//实现JSON.stringify()
+
+	// const a = function(){
+	//    return '"' + 'o' + '"';
+	// }
+
+	//call的方法实现
+	// Function.prototype.mycall = function(content = window){
+	//    content.fn = this;
+	//    var args = [...arguments].slice(1);
+	//    content.fn(...args);
+	//    delete content.fn;
+	//    return content
+	// }
+
+	//柯里化函数
+	// function curry(){
+	//    var args = Array.prototype.slice.call(arguments);//转成数组，调用数组的方法
+	//    var fn = function(){
+	//       var newArgs = Array.prototype.slice.call(arguments);
+	//       return multi.apply(this,newArgs);
+	//    }
+
+	//    fn.toString = function(){
+	//       return  args.reduce(a , b =>{
+	//          return a * b
+	//       })
+	//    }
+	//    return fn
+	// }
+
+	// 实现一个 深拷贝
+
+	function deepCopy(obj) {
+		if (typeof obj === "object") {
+			let isArr = obj.constructor === Array ? [] : {};
+			for (let key in obj) {
+				isArr[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
+			}
+			return isArr
+		} else {
+			let res = obj;
+			return res
+		}
+	}
+
+	let target = {
+		name: 'qqh',
+		arr: [1, 2, 3, 4],
+		obj: {
+			age: 16,
+			sex: 'nan',
+			skiil: {
+				run: function () {
+					alert(this.name + ' is runing');
+				},
+				sayhello : function(){
+					alert('hello my name is' + this.name)
+				}
+			}
+		}
+	};
+
+	let res = deepCopy(target);
+
+	target.name = 'cjl';
+
+	// console.log((res.obj.skiil.run.bind(res))());
+
+
+
+	// 实现一个instanceof
+
+	// function instanceOf(right , left){
+	// 	if(right.__proto__ === left.prototype.constructor){
+	// 		return true
+	// 	}
+	// }
+
+
+
+
+
+	// 手写一个promise 
+
+	
 </script>
 
 </html>

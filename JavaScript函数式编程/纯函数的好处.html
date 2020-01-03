@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 纯的
+    // var arr = [1,2,3,4,5,6];
+    // console.log(arr.slice(0,3)); // [1,2,3];
+    // console.log(arr.slice(0,3)); // [1,2,3];
+    // console.log(arr.slice(0,3)); // [1,2,3];
+
+    // // 不纯的
+    // var arr1 = [1,2,3,4,5];
+    // console.log(arr1.splice(0,3));
+    // console.log(arr1.splice(0,3));
+    // console.log(arr1.splice(0,3));
+
+
+    // 不纯
+    var mininum = 21;
+
+    function checkAge(age) {
+        return age > mininum;
+    }
+
+    // 纯  将mininum设置为 函数内部私有的，不再取决于环境的复杂度
+    function _checkAge(age) {
+        var mininum = 21;
+        return age > mininum;
+    }
+
+    // 再次将，niminum设置为不可改变的
+
+    function freedNum(age) {
+        let num = Object.freeze({
+            mininum: 21
+        });
+        return age > num.mininum;
+    }
+
+    // console.log(freedNum(22));
+
+    function memoize(f) {
+        const store = {};
+        return function () {
+            let str_args = JSON.stringify(arguments);
+            store[str_args] = store[str_args] || f.apply(f,arguments);
+            return store[str_args];
+        }
+    }
+
+    var squareNumber = memoize(function (x) {
+        return x * x
+    });
+    // console.log(squareNumber(4));
+
+    // let player = {}
+
+
+
+
+    function decrementHP(p){
+        return p.set('hp',p.hp - 1);
+    }
+
+    function isSomeTeam(player1, player2){
+        return player1.team === player2.team
+    }
+
+    var punch = function(){
+        if(isSomeTeam(player, target)){
+            return target
+        }else{
+            decrementHP(target)
+        }
+    }
+
+</script>
+
+</html>

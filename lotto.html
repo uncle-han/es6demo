@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/lotto.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 转盘 -->
+    <div class="turntable">
+        <div style="margin-bottom: 20px;">
+            选择要的礼品： <select id="selectItem">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input type="button" id="turntableBtn" value="点我开是抽奖">
+        </div>
+        <!-- 圆盘 -->
+        <section id="disk"></section>
+    </div>
+    <script ></script>
+    <script>
+        (() => {
+            const selectItem = document.getElementById('selectItem');
+            let btnSwich = false;
+            let start = '';
+            let next = '';
+            let selectItemValue = '';
+            document.getElementById('turntableBtn').onclick = function () {
+                selectItemValue = selectItem.value;
+                if(!start) {
+                    start = selectItemValue;
+                }
+                // 圈数 clycle
+                let angle = 360 * parseInt(Math.random() * 10 + 1)  + selectItemValue;
+
+            }
+        })()
+    </script>
+</body>
+
+</html>
