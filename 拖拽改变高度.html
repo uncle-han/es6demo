@@ -18,6 +18,8 @@
          background-color: #ccc;
       }
 
+      
+
       #box {
          width: 100%;
          min-height: 150px;
@@ -30,13 +32,23 @@
          background-color: #58bc58;
          cursor: move;
       }
+      .close {
+         margin: 20px;
+         width: 20px;
+         height: 20px;
+         float:right;
+         background-color: #fff;
+      }
    </style>
 </head>
 
 <body>
    <div id="wrap">
       <!-- box -->
-      <div id="box"></div>
+      <div id="box">
+         <div class="close">X</div>
+         <input type="text">
+      </div>
       <!-- 拖拽 -->
       <div class="drag"></div>
    </div>
@@ -50,7 +62,7 @@
       let dragHeight = drag.offsetHeight;
 
       drag.onmousemove = move => {
-         let h =  move.pageY - move.offsetY + dragHeight - wrapTop;
+         let h = move.pageY - move.offsetY + dragHeight - wrapTop;
          console.log(h);
          wrap.style.minHeight = h + 'px';
       }
@@ -60,6 +72,9 @@
    }
    drag.onmouseout = () => {
       drag.onmousemove = null;
+   }
+   document.getElementsByClassName('close')[0].onclick = function (){
+      window.open('https://www.baidu.com/')
    }
 </script>
 

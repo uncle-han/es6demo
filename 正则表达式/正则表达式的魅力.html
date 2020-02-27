@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <p>利用正则删除dom元素</p>
+    <h1>我是要删除的标题1</h1>
+    <H2>被删除的标题2</H2>
+    <h3>我也是要删除的标题3</h3> -->
+    <!-- <div>woshi123qinq-ihan</div> -->
+    <!-- 输入内容：<input type="text" name="inp"> <span></span> -->
+    <!-- <p>必须大写字母开头，包含字母数字和特殊符号_!@#</p>
+    <input type="text" name="passworld" id=""><span></span> -->
+    <!-- <section>
+        <div>我是div标签一</div>
+        <a href="">我是a标签</a>
+        <div>我是div标签二</div>
+    </section> -->
+    <!-- <main>
+        <h1>我是h1标签</h1>
+        <p>我是p标签</p>
+        <h2>我是h2标签</h2>
+    </main>
+
+    <p id="replace">在线教育是一种高效的学习方法，教育是一辈子的事业</p> -->
+
+    <!-- <div id="test">
+        <a style="color:red;" href="https://www.hdcms.com">开源系统</a>
+        <a href="http://houdunren.com">后盾人</a>
+        <a href="http://yahoo.com">雅虎</a>
+        <h2>http://www.hdcms.com</h2>
+    </div> -->
+
+    <div id="test"></div>
+    <input type="text">
+</body>
+<script>
+    // 一、感受正则表达式的魅力；
+    // 需求，将字符串里面的数字，全部找出来
+    // let str = 'asda2222admaskmd0000';
+    // 传统方法
+    // let res = Array.prototype.filter.call(str, item=>{
+    //     return !isNaN(parseInt(item))
+    // })
+    // console.log(res.join(''));
+
+    //利用正则表达式实现
+    // let res = str.match(/\d/g).join('');
+    // console.log(res);
+
+    // 二、有new的方式创建正则表达式，支持变量的写法
+    // let con = prompt('请输入你要查找的内容，支持正则表达式');
+
+    // let reg = new RegExp(con, 'g');
+
+    // let div = document.querySelector('div');
+    // div.innerHTML = div.innerHTML.replace(reg, item=>{
+    //     return `<span style="color:red">${item}</span>`
+    // })
+
+    // 三、 | 或的语法
+
+    // 检查是不是北京的电话号码
+    // let tel = '020-99999999';
+    // let res = /010|020\-\d{7,8}/.test(tel);
+    //  let res = /(010|020)\-\d{7,8}/.test(tel);
+    // console.log(res);
+
+    // 四、 原子表和原子组的概念；
+    //原子表 []
+    // let str = '123976291665';
+    // let reg = /[123]/g;
+    // let res = str.match(reg);
+    // console.log(res); // ["1", "2", "3", "2", "1"]
+    // 一个表的概念，只匹配1或者2或者3，有或的概念，只需要匹配到1，或者2，或者3，不是要匹配到123在整体，既：原子表里面的某一个元素即可，不是看成是一个整体
+
+    // 原子组 ()
+    // let str = '1239762912665';
+    // let reg = /(123)/g;
+    // let res = str.match(reg);
+    // console.log(res);//  ["123"]
+    // 必须匹配符合到 一组 123 的字符串, 当做是一个整体，12字符串，都不算
+
+    // 五、转义需要好好理解
+
+    // let price = '12.456';
+    // console.log(/\d+\.\d+/.test(price)); //  输出结果为： true  <---  这个是在 正则表达式 里面转义
+
+    // let reg = new RegExp('\d+\.\d+'); // 输出结果为： false   <---- 这个是在 字符串 里面的转义  在字符串里面转义 '\d' ==> 'd'       '\d' === 'd' ==> true  
+
+    // let reg = new RegExp('\\d+\\.\\d+'); //   将 \ 转义成 普通的斜杠 \      转义的结果：'\\d+\\.\\d+' ===> '\d+\.\d+' 
+    // console.log(reg.test(price)); // true  有假如前后都有一些其他字母或者数字，一样会是true  这里暂时不做讨论
+
+    // 六、 ^ 与 $  起始边界，结束边界
+
+    // document.querySelector('[name="inp"]').addEventListener('keyup',function(){
+    //     let val = this.value;
+    //     let res = /^[a-z]{3,5}$/.test(val);
+    //     document.querySelector('span').innerHTML = res ? '正确' : '错误';
+    // },false)
+
+    // 七、数值与空白
+    // \d 数值  0-9   \D除了数值之外的字符，
+    // \w 大小写字母数值下划线    \W除了大小写字母数字下划线外的字符
+    // \s 匹配空白的字符，包括空格，换行，都算      \S除了空白之外的字符
+    // [^,:/\s]   ---> 匹配除了, 和 : \ 空格之外的字符
+
+    // let telList = `
+    //                 覃淇韩:136-22753524 ， 小胖子：188-88888888。
+    //             `;
+
+    // 匹配电话号码
+    // console.log(telList.match(/(136|188)\-\d{8}/g));//["136-22753524", "188-88888888"];
+
+    //匹配中文
+    // console.log(telList.match(/[^:-\d，：。\s]/g)); //["覃", "淇", "韩", "小", "胖", "子"]
+    // 意思是 ^ 除了 : - 数字，：。空白 之外的都要
+
+    // 八、 . 点元字符的使用
+    //  除换行符之外的所有字符
+    // let str = `
+    //     www.bilibili.com
+    //     jjjxxx.sss
+    // `
+    // console.log(str.match(/.+/s));
+    // let url = 'http://www.bilibili.com/video/av85314407?spm_id_from=333.334.b_63686965665f7265636f6d6d656e64.20';
+
+    // let reg = /(https|http)?:?\/?\/?[a-z]+\.\w+\.[a-z]+/;
+    // let res = url.match(reg);
+    // console.log(res);
+
+    //九、 \s 空格元字符
+    // let tel = '010 -      99999999';
+
+    // let reg = /\d+(\s*)-(\s*)+\d{8}/;
+
+    // let res = tel.match(reg);
+    // console.log(res);
+
+    // 十、匹配所有字符
+    // \d匹配数字 和 \D除数字之外的所有字符    [\d\D]数字+数字之外的字符=所有的字符
+    // \w 字母数字下滑，  \W除字母数字下划线外
+
+    // let html = '<div><span style="color:red">覃淇韩</span></div>';
+
+    // let reg = /<span[\d\D]*<\/span>/;
+
+    // let res = html.match(reg);
+    // console.log(res);// ["<span style="color:red">覃淇韩</span>", index: 5, input: "<div><span style="color:red">覃淇韩</span></div>", groups: undefined]
+
+    // 十一、i 和 g 的模式
+    // i 不区分大小写， g全局匹配
+    // 正则表达式不加修饰符，表示区别大小写，不是全局匹配
+    // let url = 'http://www.BiliBili.com/';
+
+    // let reg = /w/;
+    // console.log(url.match(reg)); // ["w", index: 7, input: "http://www.BiliBili.com/", groups: undefined]
+    // let reg = /w/g;
+    // console.log(url.match(reg)); //  ["w", "w", "w"]
+
+    // let reg = /b/;
+    // console.log(url.match(reg)); //  null
+
+    // let reg = /b/i;
+    // console.log(url.match(reg)); //  ["B", index: 11, input: "http://www.BiliBili.com/", groups: undefined]
+
+    // let reg = /b/ig;
+    // console.log(url.match(reg)); // (2) ["B", "B"]
+
+    // let reg = /b/ig;
+    // console.log(url.replace(reg, 'b')); // http://www.bilibili.com/
+
+    // 十二、m多行匹配
+
+    // let inf = `
+    //     #1 js,200元 #
+    //     #2 php,300元 #
+    //     #3 nodejs,400元 # 不能要的部分
+    //     #4 vue.js,1000元 #
+    // `
+    // let reg = /\s*#\d+\s*[a-zA-Z.]+,\d+\W\s*#/g;
+    // let res = inf.match(reg);
+    // let relasion = res.map( v => {
+    //     [name, price] = v.replace(/\s+/g, '').replace(/#/g, '').replace(/\d+/, '').split(',');
+    //     return {name, price};
+    // })
+    // console.log(relasion);
+    // console.log(res);
+
+    // 十三、汉字字符属性，
+    // 所有的字符都有对应的属性进行区分，
+    // 如：所有的字母会有一个[L]的属性，
+    // let str = 'www.bilibili.com?id=123';
+
+    // 需求：检测str有没有L属性 ====> 只匹配字母
+    // console.log(str.match(/\p{L}/g)); // ===> null
+    // console.log(str.match(/\p{L}/gu)); // ====>  (16) ["w", "w", "w", "b", "i", "l", "i", "b", "i", "l", "i", "c", "o", "m", "i", "d"]
+    // 需求：只匹配标点符号
+    // console.log(str.match(/\p{P}/gu)); // ====> (3) [".", ".", "?"]
+
+    // 查找属于什么语言系统 Script sc
+    // let str = 'qinqihan覃淇韩';
+    // 匹配Han汉语言文字系统的字符
+    // console.log(str.match(/\p{sc=Han}/gu));// (3) ["覃", "淇", "韩"];
+
+    // 十四、有效率的y模式
+
+    // let str = 'y模式下，查找数字：44454578,875221458,777899654477,当查找到了数字，就不会往下走，就不会全部去查找，提高性能';
+    // let reg = /\d+,/y;
+    // reg.lastIndex = 10;
+    // console.log(reg.exec(str)[0].replace(/,/, ''));
+    // console.log(reg.exec(str)[0].replace(/,/, ''));
+    // console.log(reg.exec(str)[0].replace(/,/, ''));
+
+    // 十五、原子表的基本使用
+    // let str = 'www.bilibili.com?id=123';
+    // let reg = /[bd]/g;
+    // console.log(str.match(reg)); // (3) ["b", "b", "d"]
+
+    // let date = '2020-02-01';
+    // let reg = /\d+-\d{1,2}-\d{1,2}/;
+    // console.log(date.match(reg));
+
+    // let reg = /\d+-\d{1,2}-\d{1,2}/;
+    // console.log(date.match(reg)); // ["2020-02-01", index: 0, input: "2020-02-01", groups: undefined]
+
+    // let reg = /\d+[/\-]\d{1,2}[/\-]\d{1,2}/; // 时间的分隔符可以是 / - 也可以
+    // console.log(date.match(reg)); // ["2020-02-01", index: 0, input: "2020-02-01", groups: undefined]
+
+    // let date = '2020/02/01';
+    // let reg = /\d+[\/\-]\d{1,2}[\/\-]\d{1,2}/; // 时间的分隔符可以是 / - 也可以
+    // console.log(date.match(reg)); // ["2020/02/01", index: 0, input: "2020/02/01", groups: undefined]
+
+    // let date = '2020-02-01';
+    // let reg = /\d+([/\-])\d{1,2}\1\d{1,2}/; //  \1 表示 用 前面第一个原子组匹配的 结果
+    // console.log(date.match(reg));
+
+    // 十六、原子表排除匹配
+    // let str = '覃淇韩：123456，小盘子：654321。';
+    // let reg = /[^\d：，。]+/g; // 原子表中排除的方法，查找汉字
+    // console.log(str.match(reg)); // (2) ["覃淇韩", "小盘子"]
+
+    // 使用字符属性查找汉字
+    // let reg = /\p{sc=Han}/gu;
+    // console.log(str.match(reg));
+
+    // 十七、正则操作dom元素
+    // let body = document.body;
+    // console.log(body.innerHTML);
+    // let reg = /<h[1-6][\s\S]*<\/h[1-6]>/g;
+    // console.log(body.innerHTML.match(reg));
+    // body.innerHTML = body.innerHTML.replace(reg, '');
+
+    // 十八、原子组的使用方法
+    // let mail = 'adafeasasdasdf@sine.com.cn';
+    // let reg = /[\w\-]+@\w+(\.\w+)+/;
+    // console.log(mail.match(reg));
+
+    // 十八、原子组引用完成替换操作
+    // let html = `
+    //         <h1>我是h1标签</h1>
+    //         <div>我是div标签</div>
+    //         <h2>我是h2标签</h2>
+    //     `;
+    // let reg = /<h([1-6])>([\s\S]*)<\/h\1>/ig;
+
+    // // console.log(html.match(reg));
+    // // let res = html.replace(reg, (p0, p1, p2) => {
+    // //     // console.log(p0);
+    // //     // console.log(p1);
+    // //     console.log(p2);
+    // //     return `<p>${p2}</p>`
+    // // })
+    // // console.log(res);
+
+    // html.replace(reg, '<p>'+ $2 +'</p>') // $1取第一个（原子组）括号里面匹配的内容  $2取第二个（原子组）括号里面匹配的内容
+
+    // 十九、嵌套分组与不记录组
+    // let str = 'https://www.bilibili.com';
+    // let reg = /(http(s)*)\:\/\/([a-z]+\.\w+\.(com|cn|net))/;
+    // console.log(str.match(reg));
+
+    // let reg = /(http(s)*)\:\/\/(([a-z]+\.)*\w+\.(com|cn|net))/;
+
+
+    // 二十批量使用正常完成表单密码验证;
+    // const span = document.querySelector('span');
+    // const regs = [ /^[A-Z]/, /^\w{4,7}$/i, /\d+/ ];
+    // document.querySelector('[name="passworld"]').addEventListener('keyup',function(){
+    //     let status = regs.every( item => {
+    //         return item.test(this.value);
+    //         // console.log(this.value);
+    //         // console.log(item.test(this.value));
+    //     })
+    //     span.innerHTML = status ? '正确' :  '密码错误';
+    //     console.log(status);
+    // });
+
+    // 二十一、禁止贪婪和禁止贪婪的使用案例
+    // 语法：
+    // let str = 'abbbbbbbbbbbbb';
+    // 对 + 加号的禁止贪婪
+    // let reg = /ab+/; // ["abbbbbbbbbbbbb", index: 0, input: "abbbbbbbbbbbbb", groups: undefined]
+    // console.log(str.match(reg));
+
+    // let reg = /ab+?/; // ["ab", index: 0, input: "abbbbbbbbbbbbb", groups: undefined]
+    // console.log(str.match(reg));
+
+    // 对 * 星号的禁止贪婪
+    // let reg = /ab*/; // ["abbbbbbbbbbbbb", index: 0, input: "abbbbbbbbbbbbb", groups: undefined]
+    // console.log(str.match(reg));
+
+    // let reg = /ab*?/; // ["a", index: 0, input: "abbbbbbbbbbbbb", groups: undefined]
+    // console.log(str.match(reg));
+
+    // 对 {n,} 星号的禁止贪婪
+    // let reg = /ab{2,}/; // ["abbbbbbbbbbbbb", index: 0, input: "abbbbbbbbbbbbb", groups: undefined]
+    // console.log(str.match(reg));
+
+    // let reg = /ab{2,}?/; // ["abb", index: 0, input: "abbbbbbbbbbbbb", groups: undefined]
+    // console.log(str.match(reg));
+
+    // 使用案例
+    // const section = document.querySelector('section');
+    // const reg = /<div>([\s\S])+?<\/div>/ig;
+    // const res = section.innerHTML.match(reg);
+    // const  reg = /<div>([\s\S])+?<\/div>/i;
+    // const tags = [];
+    // console.log(reg.exec(section.innerHTML));
+    // reg.lastIndex = 1;
+    // console.log(reg.exec(section.innerHTML));
+    // reg.lastIndex = 2;
+    // console.log(reg.exec(section.innerHTML));
+    // switch(reg.exec()){
+
+    // }
+    // console.log(res);
+
+    // 二十二、封装一matchAll的字符串方法;
+    // 通过matchAll匹配制定内容；
+    // const main = document.querySelector('main');
+    // const reg = /<(h[1-6])>([\s\S]+)<\/\1>/i;
+    // const res = main.innerHTML.matchAll(reg);
+    // const contents = [];
+    // for (const iterator of res) {
+    //     contents.push(iterator[2])
+    //     // console.log(iterator);
+    // }
+    // console.log(contents);
+    // let s = 'houdunren';
+
+
+    // String.prototype.myMatchAll = function(reg){
+    // console.log(reg);
+    // let str = this.match(reg);
+    // console.log(str);
+    //     if(str){
+    //         this.replace(str[0], '^'.repeat(str[0].length));
+    //         let match = str[0].myMatchAll(reg) || [];
+    //     }
+    //     return [str, ...match]
+    // }
+    // s.myMatchAll(/u/ig);
+
+    // 二十三、使用exec完成完全匹配； ps：不加g模式，会一直匹配第一个，不会往下走
+    // const url = 'http://www.bilibili.com';
+    // const reg = /bi/ig;
+    // const res = [];
+    // console.log(reg.exec(url));
+    // console.log(reg.exec(url));
+    // console.log(reg.exec(url));
+
+    // while(s = reg.exec(url)) res.push(s[0]);
+    // console.log(res);
+
+    // 二十四、字符串seach和match的方法
+    // const url = 'http://www.bilibili.com';
+    // console.log(url.search(/b/ig));
+    
+    // let urls = `https://www.bilibili.com
+    //     https://sind.com.cn
+    //     http://www.baidu.com
+    // `;
+
+    // const reg = /https?:\/\/(\w+\.)*(\w+\.)+(com|cn|net|org|cc)?/ig;
+    // console.log(urls.match(reg));4
+    
+    // 字符串split搭配正则使用
+    // const time = '2010/+10-02';
+    // const arr = time.split(/[\-\/]/);
+    // console.log(arr);
+    
+    // 二十五
+    // 字符串replace 与 $ 的使用
+    // $`  匹配到的内容右边的字符
+    // $'  匹配到的内容右边的字符
+    // const str = '1_+覃淇韩-=2';
+    // console.log(str.replace(/覃淇韩/, "$`$&$'")); // 1_+1_+覃淇韩-=2-=2
+    
+    // $&  你所匹配到的内容
+    // const replaec = document.getElementById('replace')
+    // replaec.innerHTML = replaec.innerHTML.replace(/教育/g, '<a href="https://www.baidu.com">$&</a>');
+
+
+    // $1 正则表达式第一个括号(原子组)里面的内容     $2   正则表达式第二个括号(原子组)里面的内容  以此类推
+    // const tel = '(010)11111111 (020)2222222';
+    // const reg = /\((\d{3,4})\)(\d{7,8})/g;
+    // console.log(tel.match(reg)); // (2) ["(010)11111111", "(020)2222222"]
+    // console.log(tel.replace(reg, '$1-$2'));
+    
+
+
+    // 二十六、原子组在替换中的使用技巧
+    // <div id="test">
+    //     <a style="color:red;" href="http://www.hdcms.com">开源系统</a>
+    //     <a href="http://houdunren.com">后盾人</a>
+    //     <a href="http://yahoo.com">雅虎</a>
+    //     <h2>http://www.hdcms.com</h2>
+    // </div>
+    
+    // 需求：在a标签里面只查找 http://www.hdcms.com 和 http://houdunren.com  将http后面添加s，将没有www.的加添加www.
+    // const test = document.querySelector('#test');   
+    // const reg = /(<a.+href=["']http)(s?)(:\/\/)(\w+\.)?(hdcms|houdunren)/gi;
+    // test.innerHTML = test.innerHTML.replace(reg, (v, p1, p2, p3, p4, p5) => {
+    //     console.log(v);
+    //     console.log(p1);
+    //     console.log(p2);
+    //     console.log(p3);
+    //     console.log(p4);
+    //     console.log(p5);
+    //     let https = p2 ? p2 : 's';
+    //     let www = p4 ? p4 : 'www.';
+    //     return p1 + https + p3 + www + p5
+    // })
+    
+    // 二十七、给原子组起别名 语法： (?<name>)
+    // let html = `
+    //     <h1>我是h1标签</h1>
+    //     <div>div标签</div>
+    //     <h2>我是h2标签</h2>
+    // `;
+    // const reg = /<(h[1-6])>(?<con>.*?)<\/\1>/ig;
+    // console.log(html.match(reg));
+    // console.log(html.replace(reg, '<h4>$<con></h4>'));
+    // 输出结果  如下：
+    /*
+        <h4>我是h1标签</h4>
+        <div>div标签</div>
+        <h4>我是h2标签</h4>
+    */
+
+    // 使用原子组别名优化正则
+    // const str = `
+    //     <a id="a1" href="www.baidi.com">百度</a>
+    //     <a href="www.bilibili.com" style="color:red;">哔哩哔哩</a>
+    //     <a class="link" href="www.yahoo.com">雅虎</a>
+    // `;
+    // const reg = /<(a).*href=(["'])(?<link>.*?)\2(\w+)?>(?<title>[\s\S]+?)<\/\1>/ig;
+    // console.log(str.match(reg));
+    // console.log(str.matchAll(reg));
+    // for (const iterator of str.matchAll(reg)) {
+    //     console.log(iterator['groups']);
+    // }
+    
+    // 二十八、断言匹配 
+    // 语法 ： reg(?=condition) 正则匹配到的内容，且满足 条件 condition 
+    // const str = '后盾人不断分享视频教程，学习后盾人教程提升编程能力';
+    // const div = document.querySelector('[id="test"]');
+    // const reg = /后盾人(?=教程)/gi;
+    // div.innerHTML = str.replace(reg, "<a href='www.baidu.com'>$&</a>");
+
+    // 二十九、断言匹配的使用
+    // let lession = `
+    //     js,200元 100次
+    //     php,300.00元 200次
+    //     node.js,1元 10000次
+    // `;
+    // const reg = /(\d+)(\.00)?(?=元)/ig;
+    // // console.log(lession.match(reg));
+    // lession = lession.replace(reg, (v, ...agrs) => {
+    //     // console.log(agrs);
+    //     agrs[1] = agrs[1] || '.00';
+    //    return agrs.slice(0,2).join('');
+    // })
+    // console.log(lession);
+
+    // const test = document.querySelector('#test');
+    // const html = `
+    //     <a href="https://www.baidu.com">百度</a>
+    //     <a href="http://taobao.com">淘宝网</a>
+    // `;
+    // const reg = /(?<=href=(["']))(?<link>.+)(?=\1)/g
+    // test.innerHTML = html.replace(reg, 'https://bilibili.com');
+    // console.log(html.match(reg));
+    
+    // 三十、利用前断言，对电话号码做加密；
+    // const tel = '覃淇韩：12222222222,小盘子：89999999999';
+    // const reg = /(?<=\d{7})(\d{4})/g;
+    // // console.log(tel.match(reg)); // ["2222", "9999"]
+    // const res = tel.replace(reg, v=> {
+    //     return '*'.repeat(4);
+    // });
+    // console.log(res);
+
+    // 三十一、   ?!condition 所匹配到的内容后面不是condition的 条件
+    // let str = 'aaa123bbb';
+    // 匹配不是以数字结尾的字符，
+    // console.log(str.match(/[a-z]+(?!\d+)/)); // ["aa", index: 0, input: "aaa123bbb", groups: undefined]
+    // 匹配不是以数字结尾的字符，且以字母结尾
+    // console.log(str.match(/[a-z]+(?!\d+)$/)); // ["bbb", index: 6, input: "aaa123bbb", groups: undefined]
+
+    // 三十二、 通过 ?! 限制输入框不能输入某一种字符;  
+    // const test = document.querySelector('#test');
+    // const reg = /^(?!.*a+.*)[b-z]{3,5}$/
+    // document.querySelector('[type="text"]').addEventListener('keyup', function(){
+    //     test.innerHTML = this.value.match(reg) ? '正确' : '错误';
+    // })
+    
+    // const str = 'A11!2asd23asd#';
+    // const regArr = [/[a-z]+/g, /[A-Z]+/g, /[0-9]+/g,/[!@#\$%\^&\*]+/g, /.{5,18}/];
+    // const res = regArr.every(item =>  item.test(str) );
+    // console.log(res);
+</script>
+
+</html>

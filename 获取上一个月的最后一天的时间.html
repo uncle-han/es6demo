@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const now = new Date();
+        let year = now.getFullYear();
+        let month = now.getMonth() + 1;
+        let date = now.getDate();
+        console.log(year,month,date) // 2020 2 20
+
+        // 这个月的第一天的时间
+        let thisMonthFirstDay = `${year}-${1}-1`
+        // 月份单词 January、February、March、April、May、June、July、August、September、October、November、December。
+        let prevDay = new Date( new Date(thisMonthFirstDay) - 1 ) // Fri Jan 31 2020 23:59:59 GMT+0800 (中国标准时间)
+        console.log(prevDay)
+        // console.log(prevDay.getDate()); 31
+        // 获取月份
+        let prevMonth = prevDay.getMonth() + 1
+        console.log('获取月份',prevMonth) // 1
+        // 获取年份
+        let _year = prevDay.getFullYear()
+        console.log('年',_year); // 2020
+
+        // let star = 
+    </script>
+</body>
+</html>
