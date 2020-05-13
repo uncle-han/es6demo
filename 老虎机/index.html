@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <h1>简易版老虎机</h1>
+    <!-- 机器 -->
+    <section id="machine">
+        <ul class="top">
+            <li class="li0">1</li>
+            <li class="li1">2</li>
+            <li class="li2">3</li>
+            <li class="li3">4</li>
+            <li class="li4">5</li>
+            <li class="li5">6</li>
+            <li class="li6">7</li>
+        </ul>
+        <ul class="right">
+            <li class="li7">8</li>
+            <li class="li8">9</li>
+            <li class="li9">10</li>
+            <li class="li10">11</li>
+            <li class="li11">12</li>
+            <li class="li12">13</li>
+            <li class="li13">14</li>
+        </ul>
+        <ul class="buttom">
+            <li class="li14">15</li>
+            <li class="li15">16</li>
+            <li class="li16">17</li>
+            <li class="li17">18</li>
+            <li class="li18">19</li>
+            <li class="li19">20</li>
+            <li class="li20">21</li>
+            <li class="li21">22</li>
+        </ul>
+        <ul class="left">
+            <li class="li22">23</li>
+            <li class="li23">24</li>
+            <li class="li24">25</li>
+            <li class="li25">26</li>
+            <li class="li26">27</li>
+            <li class="li27">28</li>
+        </ul>
+        <!-- 控制台 -->
+        <div class="console">
+            <p class="title">
+                选择你要开奖的号数：<select id="section"></select>
+            </p>
+            <p>
+                <input type="button" value="开始抽奖" id="start">
+            </p>
+        </div>
+    </section>
+</body>
+<script>
+    function getRandomNum(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    const start = document.getElementById('start');
+    const machine = document.getElementById('machine');
+    const li = machine.getElementsByTagName('li');
+    const section = document.getElementById('section');
+    
+    li[0].style.backgroundColor = '#fdf'
+
+    let option = ''
+    for(var i = 0; i < 28; i++) {
+        option += `<option value="${i}">${i + 1}</option>`   
+    }
+    
+    section.innerHTML = option;
+    start.onclick = function () {
+        console.log(section.value);
+        // 圈数
+        const cylinder = getRandomNum(3, 5);
+        let stpe = cylinder * li.length - 1 + parseInt(section.value) // 圈数 乘以 li 的数量
+        // 计数器
+        let count = 0
+        let speed = 0;
+        let index = 0;
+        // 减速的速率
+        let deceleration = getRandomNum(40, 80);
+        ~~function nextStep(speed) {
+            const arg = arguments
+            setTimeout(function() {
+                li[index++].style.backgroundColor = '#ff9f'
+                index === li.length && (index = 0)
+                li[index].style.backgroundColor = '#fdf'
+                stpe - count <= 15 ? (speed += 60) : (speed += 2 )
+                count++ !== stpe &&  arg.callee(speed)
+            }, speed)
+        }(speed)
+    }
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // curry 函数的概念： 只传一部分参数去调用函数，让他返回一个函数去处理剩下的参数
+
+    // var add = function(x){
+    //     return function(y){
+    //         return x + y
+    //     }
+    // }
+
+    // var increment = add(1);
+    // var addTen = add(10);
+
+    // console.log(increment(1));
+    // console.log(addTen(10));
+
+    // 替换数组
+    function alternatingArray(target) { // 要替换的目标数组
+        return function(source) { // 源数组
+            const deepTarget = [...target]
+            const deepSource = [...source]
+            for(let i = 0; i < deepTarget.length; i++){
+                for(let j = 0; j < deepSource.length; j++){
+                    if(deepTarget[i].paraName === deepSource[j].paraName) {
+                        deepTarget[i] = {...source[j]}
+                        deepSource[j] = {...target[i]}
+                    }
+                }
+            }
+            return {
+                deepTarget,
+                deepSource
+            }
+        }
+    }
+    const target = [{"paraValues":[{"actionType":"add","displayValue":"低端","valueCode":"35291723799"},{"actionType":"add","displayValue":"高端","valueCode":"35291723797"}],"paraNameId":35291723786,"paraName":"定位"},{"paraValues":[{"actionType":"add","displayValue":"普通","valueCode":"35291828416"},{"actionType":"add","displayValue":"ABS","valueCode":"35291828417"}],"paraNameId":35291828404,"paraName":"箱体材质"}]
+    const source = [{"paraValues":[{"actionType":"add","displayValue":"外销整机","valueCode":"35291739088"},{"actionType":"add","displayValue":"外销散件(CKD/SKD)","valueCode":"35291739089"},{"actionType":"add","displayValue":"内销","valueCode":"35291739087"}],"paraNameId":35291739076,"paraName":"销售方向"},{"paraValues":[{"actionType":"add","displayValue":"中端","valueCode":"35291723798"},{"actionType":"add","displayValue":"低端","valueCode":"35291723799"},{"actionType":"add","displayValue":"高端","valueCode":"35291723797"}],"paraNameId":35291723786,"paraName":"定位"},{"paraValues":[{"actionType":"add","displayValue":"PCM","valueCode":"35291828415"},{"actionType":"add","displayValue":"普通","valueCode":"35291828416"},{"actionType":"add","displayValue":"ABS","valueCode":"35291828417"}],"paraNameId":35291828404,"paraName":"箱体材质"},{"paraValues":[{"actionType":"add","displayValue":"美的","valueCode":"35291887705"},{"actionType":"add","displayValue":"惠而浦","valueCode":"35291887707"},{"actionType":"add","displayValue":"AEG","valueCode":"35291887706"}],"paraNameId":35291887690,"paraName":"品牌"},{"paraValues":[{"actionType":"add","displayValue":"Q03(新智臻310/330)","valueCode":"35291886821"},{"actionType":"add","displayValue":"Q02(新美的310/330)","valueCode":"35291886820"},{"actionType":"add","displayValue":"Q01-1(AMICA310/330)","valueCode":"35291886819"}],"paraNameId":35291886808,"paraName":"前封门外观"},{"paraValues":[{"actionType":"add","displayValue":"310","valueCode":"35291886880"},{"actionType":"add","displayValue":"330","valueCode":"35291886881"},{"actionType":"add","displayValue":"380","valueCode":"35291886882"},{"actionType":"add","displayValue":"580","valueCode":"35291886883"},{"actionType":"add","displayValue":"550","valueCode":"35291886884"},{"actionType":"add","displayValue":"562","valueCode":"35291886885"},{"actionType":"add","displayValue":"288","valueCode":"35291886886"},{"actionType":"add","displayValue":"248","valueCode":"35291886887"}],"paraNameId":35291886869,"paraName":"取物口径"}]
+    const arr1 = alternatingArray(target)
+    const res = arr1(source)
+    console.log(res);
+
+
+</script>
+</html>

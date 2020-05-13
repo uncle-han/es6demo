@@ -1,12 +1,13 @@
 <template>
   <div>
-    <ul @click="component">
+    <!-- <ul @click="component">
       <li>table</li>
       <li>input</li>
       <li>button</li>
 	  <li>h1</li>
     </ul>
-	<component :is="componentName">13123</component>
+	<component :is="componentName">13123</component> -->
+  
   </div>
 </template>
 

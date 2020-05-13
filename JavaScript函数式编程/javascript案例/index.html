@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function splat(fn) {
+            return function(array) {
+                return fn.apply(null, array)
+            }
+        }
+        var addArrayElement = splat(function(x, y) {
+            return x + y
+        })
+        var res = addArrayElement([4,5,6])
+        console.log(res)
+    </script>
+</body>
+</html>
