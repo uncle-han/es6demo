@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow: hidden;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            perspective: 100px;
+            transform-style: preserve-3d;
+            overflow-y: auto;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrap {
+            width: 100%;
+            height: 45vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .wrap .text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrap:hover .text::after {
+            background-color: rgba(1,1,1,0.08);
+        }
+
+        .wrap .text::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1,1,1,0.01);
+            transition: all 0.3 ease;
+        }
+
+        .wrap .text .title {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .wrap .text .desc {
+            color: #fff;
+            margin: 20px 0;
+        }
+
+        .wrap .imgage-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            z-index: -1;
+        }
+
+        .wrap .imgage-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main">
+        <div class="wrap">
+            <div class="text">
+                <p class="title">123</p>
+                <p class="desc">jkadsjajajk</p>
+            </div>
+            <div class="imgage-item">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3204861144,3578230341&fm=26&gp=0.jpg"
+                    alt="image-1">
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="text">
+                <p class="title">123</p>
+                <p class="desc">jkadsjajajk</p>
+            </div>
+            <div class="imgage-item">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3204861144,3578230341&fm=26&gp=0.jpg"
+                    alt="image-2">
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="text">
+                <p class="title">123</p>
+                <p class="desc">jkadsjajajk</p>
+            </div>
+            <div class="imgage-item">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3204861144,3578230341&fm=26&gp=0.jpg"
+                    alt="image-3">
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="text">
+                <p class="title">123</p>
+                <p class="desc">jkadsjajajk</p>
+            </div>
+            <div class="imgage-item">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3204861144,3578230341&fm=26&gp=0.jpg"
+                    alt="image-4">
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="text">
+                <p class="title">123</p>
+                <p class="desc">jkadsjajajk</p>
+            </div>
+            <div class="imgage-item">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3204861144,3578230341&fm=26&gp=0.jpg"
+                    alt="image-5">
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
